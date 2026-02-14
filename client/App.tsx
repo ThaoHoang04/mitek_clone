@@ -30,6 +30,7 @@ export default function App() {
               <Route path="/" element={<Index />} />
               <Route path="/gioi-thieu" element={<About />} />
               <Route path="/tin-tuc" element={<News />} />
+              <Route path="/tin-tuc/:newsId" element={<News />} />
               <Route path="/thu-vien-anh" element={<Gallery />} />
               <Route path="/lien-he" element={<Contact />} />
               <Route path="/danh-muc-san-pham" element={<Products />} />
