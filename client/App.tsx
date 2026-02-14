@@ -12,6 +12,7 @@ import Products from "./pages/Products";
 import News from "./pages/News";
 import Contact from "./pages/Contact";
 import Gallery from "./pages/Gallery";
+import ProductDetail from "./pages/ProductDetail";
 import { Layout } from "./components/Layout";
 
 const queryClient = new QueryClient();
@@ -35,6 +36,13 @@ export default function App() {
               <Route path="/ma-crom" element={<Products />} />
               <Route path="/hoan-thien-be-mat-nhom" element={<Products />} />
               <Route path="/ma-tren-nen-nhua" element={<Products />} />
+
+              {/* Product Detail Routes */}
+              <Route path="/metclean-sc10" element={<ProductDetail />} />
+              <Route path="/metclean-ec20" element={<ProductDetail />} />
+              <Route path="/sparkle-ac-78" element={<ProductDetail />} />
+              <Route path="/ni-2600" element={<ProductDetail />} />
+
               <Route path="/tin-tuc" element={<News />} />
               <Route path="/thu-vien-anh" element={<Gallery />} />
               <Route path="/lien-he" element={<Contact />} />
