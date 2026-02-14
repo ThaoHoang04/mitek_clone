@@ -1,7 +1,6 @@
 import "./global.css";
 
 import { Toaster } from "@/components/ui/toaster";
-import { createRoot } from "react-dom/client";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -17,34 +16,34 @@ import { Layout } from "./components/Layout";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/gioi-thieu" element={<About />} />
-            <Route path="/danh-muc-san-pham" element={<Products />} />
-            <Route path="/chat-tay-rua" element={<Products />} />
-            <Route path="/ma-kem" element={<Products />} />
-            <Route path="/ma-dong" element={<Products />} />
-            <Route path="/ma-niken" element={<Products />} />
-            <Route path="/ma-crom" element={<Products />} />
-            <Route path="/hoan-thien-be-mat-nhom" element={<Products />} />
-            <Route path="/ma-tren-nen-nhua" element={<Products />} />
-            <Route path="/tin-tuc" element={<News />} />
-            <Route path="/thu-vien-anh" element={<Gallery />} />
-            <Route path="/lien-he" element={<Contact />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Layout>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
-
-createRoot(document.getElementById("root")!).render(<App />);
+export default function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/gioi-thieu" element={<About />} />
+              <Route path="/danh-muc-san-pham" element={<Products />} />
+              <Route path="/chat-tay-rua" element={<Products />} />
+              <Route path="/ma-kem" element={<Products />} />
+              <Route path="/ma-dong" element={<Products />} />
+              <Route path="/ma-niken" element={<Products />} />
+              <Route path="/ma-crom" element={<Products />} />
+              <Route path="/hoan-thien-be-mat-nhom" element={<Products />} />
+              <Route path="/ma-tren-nen-nhua" element={<Products />} />
+              <Route path="/tin-tuc" element={<News />} />
+              <Route path="/thu-vien-anh" element={<Gallery />} />
+              <Route path="/lien-he" element={<Contact />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Layout>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+}
