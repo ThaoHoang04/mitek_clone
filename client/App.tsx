@@ -44,6 +44,12 @@ export default function App() {
               <Route path="/ma-tren-nen-nhua" element={<Products />} />
               <Route path="/chong-an-mon" element={<Products />} />
 
+              {/* Explicit Product Detail Routes to ensure matching */}
+              <Route path="/metclean-sc10" element={<ProductDetail />} />
+              <Route path="/metclean-ec20" element={<ProductDetail />} />
+              <Route path="/coldip-tri-v-zn-ni" element={<ProductDetail />} />
+              <Route path="/kenlevel-blue" element={<ProductDetail />} />
+
               {/* Product Detail Catch-all (for 1st level paths) */}
               <Route path="/:id" element={<ProductDetail />} />
 

@@ -1,41 +1,7 @@
 import { ArrowRight, CheckCircle2, FlaskConical, Settings, ShieldCheck, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-
-const products = [
-  {
-    id: 1,
-    name: "METCLEAN® SC10",
-    category: "Chất tẩy rửa",
-    description: "Hoá chất tẩy dầu mỡ ngâm nóng dạng kiềm",
-    image: "https://bizweb.dktcdn.net/thumb/large/100/424/639/products/sc10.jpg?v=1628823270670",
-    path: "/metclean-sc10"
-  },
-  {
-    id: 2,
-    name: "METCLEAN® EC20",
-    category: "Chất tẩy rửa",
-    description: "Hoá chất tẩy dầu điện",
-    image: "https://bizweb.dktcdn.net/thumb/large/100/424/639/products/ec20.jpg?v=1628823330367",
-    path: "/metclean-ec20"
-  },
-  {
-    id: 3,
-    name: "SPARKLE AC 78",
-    category: "Mạ đồng",
-    description: "Hoá chất xi mạ đánh bóng đồng",
-    image: "https://bizweb.dktcdn.net/thumb/large/100/424/639/products/ac78.jpg?v=1628823483980",
-    path: "/sparkle-ac-78"
-  },
-  {
-    id: 4,
-    name: "NI 2600",
-    category: "Mạ niken",
-    description: "Phụ gia mạ niken bóng nhanh",
-    image: "https://bizweb.dktcdn.net/thumb/large/100/424/639/products/ni2600.jpg?v=1628823545000",
-    path: "/ni-2600"
-  }
-];
+import { products } from "@/lib/mock-data";
 
 const categories = [
   { name: "Chất tẩy rửa", icon: <FlaskConical className="w-8 h-8" />, path: "/chat-tay-rua" },
@@ -45,6 +11,8 @@ const categories = [
 ];
 
 export default function Index() {
+  const featuredProducts = products.slice(0, 4);
+
   return (
     <div className="bg-white">
       {/* Hero Section */}
@@ -164,16 +132,16 @@ export default function Index() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {products.map((product) => (
+            {featuredProducts.map((product) => (
               <div key={product.id} className="bg-white group overflow-hidden border border-gray-100 hover:border-primary/20 transition-all hover:shadow-xl">
                 <div className="relative aspect-square overflow-hidden bg-gray-100">
-                  <img 
-                    src={product.image} 
-                    alt={product.name} 
+                  <img
+                    src={product.image}
+                    alt={product.name}
                     className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 p-4"
                   />
                   <div className="absolute inset-0 bg-primary/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <Link to={product.path}>
+                    <Link to={`/${product.id}`}>
                       <Button variant="outline" className="text-white border-white hover:bg-white hover:text-primary rounded-none">
                         Chi tiết
                       </Button>
@@ -181,7 +149,7 @@ export default function Index() {
                   </div>
                 </div>
                 <div className="p-6">
-                  <span className="text-xs text-primary font-oswald uppercase tracking-wider mb-2 block">{product.category}</span>
+                  <span className="text-xs text-primary font-oswald uppercase tracking-wider mb-2 block">{product.categoryName}</span>
                   <h3 className="font-bold text-lg mb-2 text-gray-800 line-clamp-1 group-hover:text-primary transition-colors">
                     {product.name}
                   </h3>
