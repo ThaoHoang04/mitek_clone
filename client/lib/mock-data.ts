@@ -94,5 +94,68 @@ export const products = [
       "pH": "4.8 - 5.4",
       "Nhiệt độ": "20 - 45°C"
     }
+  },
+  {
+    id: "sparkle-ac-78",
+    name: "SPARKLE AC 78",
+    categoryId: "copper",
+    categoryName: "Mạ đồng",
+    description: "Hoá chất xi mạ đánh bóng đồng",
+    image: "https://bizweb.dktcdn.net/thumb/large/100/424/639/products/ac78.jpg?v=1628823483980",
+    details: "SPARKLE AC 78 là quy trình mạ đồng acid bóng cao cấp, tạo lớp mạ có độ san phẳng tuyệt vời và độ bóng gương rực rỡ. Sản phẩm cực kỳ ổn định, dễ vận hành và phù hợp cho cả mạ treo và mạ quay.",
+    features: [
+      "Độ bóng và độ san phẳng cực cao",
+      "Lớp mạ dẻo, độ bám dính tốt",
+      "Tiêu hao phụ gia thấp",
+      "Phù hợp cho nhiều nền kim loại khác nhau"
+    ],
+    specs: {
+      "Hàm lượng Cu": "50 - 60 g/L",
+      "Hàm lượng H2SO4": "50 - 70 g/L",
+      "Hàm lượng Cl-": "60 - 100 ppm",
+      "Nhiệt độ": "20 - 30°C"
+    }
+  },
+  {
+    id: "ni-2600",
+    name: "NI 2600",
+    categoryId: "nickel",
+    categoryName: "Mạ niken",
+    description: "Phụ gia mạ niken bóng nhanh",
+    image: "https://bizweb.dktcdn.net/thumb/large/100/424/639/products/ni2600.jpg?v=1628823545000",
+    details: "NI 2600 là hệ phụ gia mạ niken bóng tiên tiến, giúp tạo lớp mạ niken cực kỳ bóng và trắng sáng trong thời gian ngắn. Sản phẩm có khả năng phân bố độ dày lớp mạ tốt và độ san phẳng cao.",
+    features: [
+      "Tốc độ làm bóng cực nhanh",
+      "Lớp mạ trắng sáng, rực rỡ",
+      "Khả năng chịu tạp chất tốt",
+      "Dễ dàng kiểm soát bằng phân tích"
+    ],
+    specs: {
+      "Hàm lượng Ni": "60 - 80 g/L",
+      "Hàm lượng Acid Boric": "40 - 50 g/L",
+      "pH": "3.8 - 4.6",
+      "Nhiệt độ": "50 - 60°C"
+    }
+  },
+  {
+    id: "tricol-decor",
+    name: "TriCOL™ Décor",
+    categoryId: "chrome",
+    categoryName: "Mạ crôm",
+    description: "Hóa chất mạ crôm 3+ trang trí",
+    image: "https://bizweb.dktcdn.net/thumb/large/100/424/639/products/ni2600.jpg?v=1628823545000",
+    details: "TriCOL™ Décor là công nghệ mạ crôm hóa trị 3 (Cr3+) thân thiện với môi trường, thay thế hoàn toàn quy trình mạ crôm hóa trị 6 độc hại. Sản phẩm tạo lớp mạ crôm trang trí có màu sắc hiện đại, trắng sáng và khả năng bao phủ tuyệt vời.",
+    features: [
+      "Thân thiện với môi trường (Cr3+)",
+      "Khả năng bao phủ cực tốt",
+      "Màu sắc đồng nhất, trắng sáng",
+      "An toàn cho người vận hành"
+    ],
+    specs: {
+      "Hàm lượng Cr": "20 - 25 g/L",
+      "pH": "3.4 - 3.8",
+      "Nhiệt độ": "30 - 40°C",
+      "Mật độ dòng": "5 - 15 A/dm²"
+    }
   }
 ];
