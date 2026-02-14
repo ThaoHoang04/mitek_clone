@@ -1,19 +1,19 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Search, ChevronRight, LayoutGrid, List, Filter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const categories = [
-  { id: "all", name: "Tất cả sản phẩm" },
-  { id: "detergents", name: "CHẤT TẨY RỬA" },
-  { id: "zinc", name: "MẠ KẼM" },
-  { id: "copper", name: "MẠ ĐỒNG" },
-  { id: "nickel", name: "MẠ NIKEN" },
-  { id: "chrome", name: "MẠ CRÔM" },
-  { id: "aluminum", name: "HOÀN THIỆN BỀ MẶT NHÔM" },
-  { id: "plastic", name: "MẠ TRÊN NỀN NHỰA" },
-  { id: "anti-corrosion", name: "CHỐNG ĂN MÒN" },
+  { id: "all", name: "Tất cả sản phẩm", path: "/danh-muc-san-pham" },
+  { id: "detergents", name: "CHẤT TẨY RỬA", path: "/chat-tay-rua" },
+  { id: "zinc", name: "MẠ KẼM", path: "/ma-kem" },
+  { id: "copper", name: "MẠ ĐỒNG", path: "/ma-dong" },
+  { id: "nickel", name: "MẠ NIKEN", path: "/ma-niken" },
+  { id: "chrome", name: "MẠ CRÔM", path: "/ma-crom" },
+  { id: "aluminum", name: "HOÀN THIỆN BỀ MẶT NHÔM", path: "/hoan-thien-be-mat-nhom" },
+  { id: "plastic", name: "MẠ TRÊN NỀN NHỰA", path: "/ma-tren-nen-nhua" },
+  { id: "anti-corrosion", name: "CHỐNG ĂN MÒN", path: "/chong-an-mon" },
 ];
 
 const products = [
@@ -32,6 +32,30 @@ const products = [
     categoryName: "Chất tẩy rửa",
     description: "Hoá chất tẩy dầu điện",
     image: "https://bizweb.dktcdn.net/thumb/large/100/424/639/products/ec20.jpg?v=1628823330367",
+  },
+  {
+    id: "coldip-tri-v-zn-ni",
+    name: "COLDIP™ TRI-V ZN-NI TRUE BLUE 1000",
+    categoryId: "zinc",
+    categoryName: "Mạ kẽm",
+    description: "Hóa chất mạ kẽm-niken chất lượng cao",
+    image: "https://bizweb.dktcdn.net/thumb/large/100/424/639/products/sc10.jpg?v=1628823270670",
+  },
+  {
+    id: "kenlevel-blue",
+    name: "KENLEVEL® BLUE",
+    categoryId: "zinc",
+    categoryName: "Mạ kẽm",
+    description: "Phụ gia mạ kẽm acid clorua",
+    image: "https://bizweb.dktcdn.net/thumb/large/100/424/639/products/ec20.jpg?v=1628823330367",
+  },
+  {
+    id: "zincrolyte-clz",
+    name: "ZINCROLYTE® CLZ",
+    categoryId: "zinc",
+    categoryName: "Mạ kẽm",
+    description: "Công nghệ mạ kẽm hợp kim chất lượng cao",
+    image: "https://bizweb.dktcdn.net/thumb/large/100/424/639/products/ac78.jpg?v=1628823483980",
   },
   {
     id: "sparkle-ac-78",
@@ -84,16 +108,29 @@ const products = [
 ];
 
 export default function Products() {
+  const location = useLocation();
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
 
+  useEffect(() => {
+    const currentPath = location.pathname;
+    const categoryMatch = categories.find(cat => cat.path === currentPath);
+    if (categoryMatch) {
+      setSelectedCategory(categoryMatch.id);
+    } else {
+      setSelectedCategory("all");
+    }
+  }, [location.pathname]);
+
   const filteredProducts = products.filter((product) => {
     const matchesCategory = selectedCategory === "all" || product.categoryId === selectedCategory;
-    const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+    const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          product.description.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
+
+  const currentCategoryName = categories.find(c => c.id === selectedCategory)?.name || "Sản phẩm";
 
   return (
     <div className="bg-white min-h-screen">
@@ -105,7 +142,7 @@ export default function Products() {
         <div className="container relative z-10 px-4">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div>
-              <h1 className="text-3xl md:text-5xl uppercase font-bold mb-2">Sản phẩm</h1>
+              <h1 className="text-3xl md:text-5xl uppercase font-bold mb-2">{currentCategoryName}</h1>
               <nav className="flex items-center gap-2 text-sm text-white/80">
                 <Link to="/" className="hover:text-secondary">Trang chủ</Link>
                 <ChevronRight size={14} />
@@ -141,12 +178,12 @@ export default function Products() {
                   <ul className="space-y-1">
                     {categories.map((cat) => (
                       <li key={cat.id}>
-                        <button 
-                          onClick={() => setSelectedCategory(cat.id)}
+                        <Link
+                          to={cat.path}
                           className={cn(
                             "w-full text-left px-4 py-3 font-medium transition-all flex justify-between items-center group",
-                            selectedCategory === cat.id 
-                              ? "bg-primary text-white" 
+                            selectedCategory === cat.id
+                              ? "bg-primary text-white"
                               : "hover:bg-gray-100 text-gray-700"
                           )}
                         >
@@ -155,7 +192,7 @@ export default function Products() {
                             "transition-transform",
                             selectedCategory === cat.id ? "translate-x-1" : "opacity-0 group-hover:opacity-100"
                           )} />
-                        </button>
+                        </Link>
                       </li>
                     ))}
                   </ul>
