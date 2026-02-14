@@ -13,6 +13,7 @@ import News from "./pages/News";
 import Contact from "./pages/Contact";
 import Gallery from "./pages/Gallery";
 import ProductDetail from "./pages/ProductDetail";
+import NewsDetail from "./pages/NewsDetail";
 import { Layout } from "./components/Layout";
 
 const queryClient = new QueryClient();
@@ -30,7 +31,7 @@ export default function App() {
               <Route path="/" element={<Index />} />
               <Route path="/gioi-thieu" element={<About />} />
               <Route path="/tin-tuc" element={<News />} />
-              <Route path="/tin-tuc/:newsId" element={<News />} />
+              <Route path="/tin-tuc/:newsId" element={<NewsDetail />} />
               <Route path="/thu-vien-anh" element={<Gallery />} />
               <Route path="/lien-he" element={<Contact />} />
               <Route path="/danh-muc-san-pham" element={<Products />} />
