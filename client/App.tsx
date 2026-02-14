@@ -26,9 +26,15 @@ export default function App() {
         <BrowserRouter>
           <Layout>
             <Routes>
+              {/* Static Pages */}
               <Route path="/" element={<Index />} />
               <Route path="/gioi-thieu" element={<About />} />
+              <Route path="/tin-tuc" element={<News />} />
+              <Route path="/thu-vien-anh" element={<Gallery />} />
+              <Route path="/lien-he" element={<Contact />} />
               <Route path="/danh-muc-san-pham" element={<Products />} />
+              
+              {/* Category Routes */}
               <Route path="/chat-tay-rua" element={<Products />} />
               <Route path="/ma-kem" element={<Products />} />
               <Route path="/ma-dong" element={<Products />} />
@@ -36,17 +42,12 @@ export default function App() {
               <Route path="/ma-crom" element={<Products />} />
               <Route path="/hoan-thien-be-mat-nhom" element={<Products />} />
               <Route path="/ma-tren-nen-nhua" element={<Products />} />
+              <Route path="/chong-an-mon" element={<Products />} />
 
-              {/* Product Detail Routes */}
-              <Route path="/metclean-sc10" element={<ProductDetail />} />
-              <Route path="/metclean-ec20" element={<ProductDetail />} />
-              <Route path="/sparkle-ac-78" element={<ProductDetail />} />
-              <Route path="/ni-2600" element={<ProductDetail />} />
+              {/* Product Detail Catch-all (for 1st level paths) */}
+              <Route path="/:id" element={<ProductDetail />} />
 
-              <Route path="/tin-tuc" element={<News />} />
-              <Route path="/thu-vien-anh" element={<Gallery />} />
-              <Route path="/lien-he" element={<Contact />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              {/* 404 Route */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Layout>

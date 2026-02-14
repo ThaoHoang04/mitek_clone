@@ -18,6 +18,7 @@ const menuItems = [
       { name: "MẠ CRÔM", path: "/ma-crom" },
       { name: "HOÀN THIỆN BỀ MẶT NHÔM", path: "/hoan-thien-be-mat-nhom" },
       { name: "MẠ TRÊN NỀN NHỰA", path: "/ma-tren-nen-nhua" },
+      { name: "CHỐNG ĂN MÒN", path: "/chong-an-mon" },
     ]
   },
   { name: "Tin tức", path: "/tin-tuc" },

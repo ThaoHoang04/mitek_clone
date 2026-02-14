@@ -3,109 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Search, ChevronRight, LayoutGrid, List, Filter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-
-const categories = [
-  { id: "all", name: "Tất cả sản phẩm", path: "/danh-muc-san-pham" },
-  { id: "detergents", name: "CHẤT TẨY RỬA", path: "/chat-tay-rua" },
-  { id: "zinc", name: "MẠ KẼM", path: "/ma-kem" },
-  { id: "copper", name: "MẠ ĐỒNG", path: "/ma-dong" },
-  { id: "nickel", name: "MẠ NIKEN", path: "/ma-niken" },
-  { id: "chrome", name: "MẠ CRÔM", path: "/ma-crom" },
-  { id: "aluminum", name: "HOÀN THIỆN BỀ MẶT NHÔM", path: "/hoan-thien-be-mat-nhom" },
-  { id: "plastic", name: "MẠ TRÊN NỀN NHỰA", path: "/ma-tren-nen-nhua" },
-  { id: "anti-corrosion", name: "CHỐNG ĂN MÒN", path: "/chong-an-mon" },
-];
-
-const products = [
-  {
-    id: "metclean-sc10",
-    name: "METCLEAN® SC10",
-    categoryId: "detergents",
-    categoryName: "Chất tẩy rửa",
-    description: "Hoá chất tẩy dầu mỡ ngâm nóng dạng kiềm",
-    image: "https://bizweb.dktcdn.net/thumb/large/100/424/639/products/sc10.jpg?v=1628823270670",
-  },
-  {
-    id: "metclean-ec20",
-    name: "METCLEAN® EC20",
-    categoryId: "detergents",
-    categoryName: "Chất tẩy rửa",
-    description: "Hoá chất tẩy dầu điện",
-    image: "https://bizweb.dktcdn.net/thumb/large/100/424/639/products/ec20.jpg?v=1628823330367",
-  },
-  {
-    id: "coldip-tri-v-zn-ni",
-    name: "COLDIP™ TRI-V ZN-NI TRUE BLUE 1000",
-    categoryId: "zinc",
-    categoryName: "Mạ kẽm",
-    description: "Hóa chất mạ kẽm-niken chất lượng cao",
-    image: "https://bizweb.dktcdn.net/thumb/large/100/424/639/products/sc10.jpg?v=1628823270670",
-  },
-  {
-    id: "kenlevel-blue",
-    name: "KENLEVEL® BLUE",
-    categoryId: "zinc",
-    categoryName: "Mạ kẽm",
-    description: "Phụ gia mạ kẽm acid clorua",
-    image: "https://bizweb.dktcdn.net/thumb/large/100/424/639/products/ec20.jpg?v=1628823330367",
-  },
-  {
-    id: "zincrolyte-clz",
-    name: "ZINCROLYTE® CLZ",
-    categoryId: "zinc",
-    categoryName: "Mạ kẽm",
-    description: "Công nghệ mạ kẽm hợp kim chất lượng cao",
-    image: "https://bizweb.dktcdn.net/thumb/large/100/424/639/products/ac78.jpg?v=1628823483980",
-  },
-  {
-    id: "sparkle-ac-78",
-    name: "SPARKLE AC 78",
-    categoryId: "copper",
-    categoryName: "Mạ đồng",
-    description: "Hoá chất xi mạ đánh bóng đồng",
-    image: "https://bizweb.dktcdn.net/thumb/large/100/424/639/products/ac78.jpg?v=1628823483980",
-  },
-  {
-    id: "ni-2600",
-    name: "NI 2600",
-    categoryId: "nickel",
-    categoryName: "Mạ niken",
-    description: "Phụ gia mạ niken bóng nhanh",
-    image: "https://bizweb.dktcdn.net/thumb/large/100/424/639/products/ni2600.jpg?v=1628823545000",
-  },
-  {
-    id: "ni-2100",
-    name: "NI 2100",
-    categoryId: "nickel",
-    categoryName: "Mạ niken",
-    description: "Phụ gia mạ niken bán bóng",
-    image: "https://bizweb.dktcdn.net/thumb/large/100/424/639/products/ni2100.jpg?v=1628823545000",
-  },
-  {
-    id: "tricol-decor",
-    name: "TriCOL™ Décor",
-    categoryId: "chrome",
-    categoryName: "Mạ crôm",
-    description: "Hóa chất mạ crôm 3+ trang trí",
-    image: "https://bizweb.dktcdn.net/thumb/large/100/424/639/products/ni2600.jpg?v=1628823545000",
-  },
-  {
-    id: "aluma-black-a14",
-    name: "ALUMA BLACK A14",
-    categoryId: "aluminum",
-    categoryName: "Hoàn thiện bề mặt nhôm",
-    description: "Hóa chất nhuộm đen nhiệt độ thường cho nhôm",
-    image: "https://bizweb.dktcdn.net/thumb/large/100/424/639/products/sc10.jpg?v=1628823270670",
-  },
-  {
-    id: "vpci-329",
-    name: "VpCI®-329",
-    categoryId: "anti-corrosion",
-    categoryName: "Chống ăn mòn",
-    description: "Chất ức chế ăn mòn đậm đặc gốc dầu",
-    image: "https://bizweb.dktcdn.net/thumb/large/100/424/639/products/ec20.jpg?v=1628823330367",
-  },
-];
+import { categories, products } from "@/lib/mock-data";
 
 export default function Products() {
   const location = useLocation();
@@ -118,14 +16,14 @@ export default function Products() {
     const categoryMatch = categories.find(cat => cat.path === currentPath);
     if (categoryMatch) {
       setSelectedCategory(categoryMatch.id);
-    } else {
+    } else if (currentPath === "/danh-muc-san-pham") {
       setSelectedCategory("all");
     }
   }, [location.pathname]);
 
   const filteredProducts = products.filter((product) => {
     const matchesCategory = selectedCategory === "all" || product.categoryId === selectedCategory;
-    const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
                          product.description.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
@@ -178,12 +76,12 @@ export default function Products() {
                   <ul className="space-y-1">
                     {categories.map((cat) => (
                       <li key={cat.id}>
-                        <Link
+                        <Link 
                           to={cat.path}
                           className={cn(
                             "w-full text-left px-4 py-3 font-medium transition-all flex justify-between items-center group",
-                            selectedCategory === cat.id
-                              ? "bg-primary text-white"
+                            selectedCategory === cat.id 
+                              ? "bg-primary text-white" 
                               : "hover:bg-gray-100 text-gray-700"
                           )}
                         >
