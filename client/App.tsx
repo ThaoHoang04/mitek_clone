@@ -8,6 +8,12 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import About from "./pages/About";
+import Products from "./pages/Products";
+import News from "./pages/News";
+import Contact from "./pages/Contact";
+import Gallery from "./pages/Gallery";
+import { Layout } from "./components/Layout";
 
 const queryClient = new QueryClient();
 
@@ -17,11 +23,25 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/gioi-thieu" element={<About />} />
+            <Route path="/danh-muc-san-pham" element={<Products />} />
+            <Route path="/chat-tay-rua" element={<Products />} />
+            <Route path="/ma-kem" element={<Products />} />
+            <Route path="/ma-dong" element={<Products />} />
+            <Route path="/ma-niken" element={<Products />} />
+            <Route path="/ma-crom" element={<Products />} />
+            <Route path="/hoan-thien-be-mat-nhom" element={<Products />} />
+            <Route path="/ma-tren-nen-nhua" element={<Products />} />
+            <Route path="/tin-tuc" element={<News />} />
+            <Route path="/thu-vien-anh" element={<Gallery />} />
+            <Route path="/lien-he" element={<Contact />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Layout>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
