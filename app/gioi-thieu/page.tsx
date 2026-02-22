@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { ChevronRight, Target, Eye, Factory, ShieldCheck, Globe, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -17,7 +17,7 @@ export default function About() {
         <div className="container relative z-10 px-4">
           <h1 className="text-4xl md:text-5xl uppercase font-bold mb-4 font-oswald tracking-tight">Giới thiệu</h1>
           <nav className="flex items-center gap-2 text-sm text-white/80 uppercase font-oswald tracking-wider">
-            <Link to="/" className="hover:text-secondary transition-colors">Trang chủ</Link>
+            <Link href="/" className="hover:text-secondary transition-colors">Trang chủ</Link>
             <ChevronRight size={14} />
             <span className="text-secondary font-medium">Giới thiệu về MITEK</span>
           </nav>
@@ -154,7 +154,7 @@ export default function About() {
             </div>
           </div>
           <div className="mt-16">
-            <Link to="/lien-he">
+            <Link href="/lien-he">
               <Button size="lg" className="bg-secondary text-primary hover:bg-white font-bold h-14 rounded-none px-12 uppercase font-oswald tracking-widest">
                 Liên hệ với chúng tôi
               </Button>

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Phone, Mail, MapPin, Facebook, Youtube, Send } from "lucide-react";
 
 export const Footer = () => {
@@ -8,7 +8,7 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Company Info */}
           <div>
-            <Link to="/" className="inline-block mb-6">
+            <Link href="/" className="inline-block mb-6">
               <img 
                 src="https://bizweb.dktcdn.net/100/424/639/themes/823315/assets/logo.png?1763658688907" 
                 alt="MITEK Logo" 
@@ -35,11 +35,11 @@ export const Footer = () => {
           <div>
             <h3 className="font-oswald text-white uppercase text-xl mb-6 border-l-4 border-primary pl-4">Liên kết nhanh</h3>
             <ul className="space-y-3 text-sm">
-              <li><Link to="/gioi-thieu" className="hover:text-primary transition-colors">Giới thiệu</Link></li>
-              <li><Link to="/danh-muc-san-pham" className="hover:text-primary transition-colors">Sản phẩm</Link></li>
-              <li><Link to="/tin-tuc" className="hover:text-primary transition-colors">Tin tức & Sự kiện</Link></li>
-              <li><Link to="/thu-vien-anh" className="hover:text-primary transition-colors">Thư viện ảnh</Link></li>
-              <li><Link to="/lien-he" className="hover:text-primary transition-colors">Liên hệ</Link></li>
+              <li><Link href="/gioi-thieu" className="hover:text-primary transition-colors">Giới thiệu</Link></li>
+              <li><Link href="/danh-muc-san-pham" className="hover:text-primary transition-colors">Sản phẩm</Link></li>
+              <li><Link href="/tin-tuc" className="hover:text-primary transition-colors">Tin tức & Sự kiện</Link></li>
+              <li><Link href="/thu-vien-anh" className="hover:text-primary transition-colors">Thư viện ảnh</Link></li>
+              <li><Link href="/lien-he" className="hover:text-primary transition-colors">Liên hệ</Link></li>
             </ul>
           </div>
 
@@ -47,11 +47,11 @@ export const Footer = () => {
           <div>
             <h3 className="font-oswald text-white uppercase text-xl mb-6 border-l-4 border-primary pl-4">Danh mục chính</h3>
             <ul className="space-y-3 text-sm">
-              <li><Link to="/chat-tay-rua" className="hover:text-primary transition-colors uppercase">Chất tẩy rửa</Link></li>
-              <li><Link to="/ma-kem" className="hover:text-primary transition-colors uppercase">Mạ kẽm</Link></li>
-              <li><Link to="/ma-dong" className="hover:text-primary transition-colors uppercase">Mạ đồng</Link></li>
-              <li><Link to="/ma-niken" className="hover:text-primary transition-colors uppercase">Mạ niken</Link></li>
-              <li><Link to="/ma-crom" className="hover:text-primary transition-colors uppercase">Mạ crôm</Link></li>
+              <li><Link href="/chat-tay-rua" className="hover:text-primary transition-colors uppercase">Chất tẩy rửa</Link></li>
+              <li><Link href="/ma-kem" className="hover:text-primary transition-colors uppercase">Mạ kẽm</Link></li>
+              <li><Link href="/ma-dong" className="hover:text-primary transition-colors uppercase">Mạ đồng</Link></li>
+              <li><Link href="/ma-niken" className="hover:text-primary transition-colors uppercase">Mạ niken</Link></li>
+              <li><Link href="/ma-crom" className="hover:text-primary transition-colors uppercase">Mạ crôm</Link></li>
             </ul>
           </div>
 

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { ChevronRight, Calendar, User, ArrowRight, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -50,7 +50,7 @@ export default function News() {
         <div className="container relative z-10 px-4">
           <h1 className="text-3xl md:text-5xl uppercase font-bold mb-4 font-oswald tracking-tight">Tin tức</h1>
           <nav className="flex items-center gap-2 text-sm text-white/80 uppercase font-oswald tracking-wider">
-            <Link to="/" className="hover:text-secondary transition-colors">Trang chủ</Link>
+            <Link href="/" className="hover:text-secondary transition-colors">Trang chủ</Link>
             <ChevronRight size={14} />
             <span className="text-secondary font-medium">Tin tức & Sự kiện</span>
           </nav>
@@ -83,14 +83,14 @@ export default function News() {
                         <span className="flex items-center gap-1.5"><Calendar size={14} className="text-primary" /> {news.date.day}/{news.date.month}/2025</span>
                       </div>
                       <h3 className="text-xl font-oswald font-bold uppercase mb-4 leading-snug group-hover:text-primary transition-colors line-clamp-2">
-                        <Link to={`/tin-tuc/${news.id}`}>{news.title}</Link>
+                        <Link href={`/tin-tuc/${news.id}`}>{news.title}</Link>
                       </h3>
                       <p className="text-gray-500 text-sm leading-relaxed mb-6 line-clamp-3">
                         {news.summary}
                       </p>
                       <div className="mt-auto">
                         <Link 
-                          to={`/tin-tuc/${news.id}`} 
+                          href={`/tin-tuc/${news.id}`} 
                           className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary hover:gap-3 transition-all"
                         >
                           Xem chi tiết <ArrowRight size={14} />
@@ -135,7 +135,7 @@ export default function News() {
                   <ul className="space-y-4">
                     {["Tin công ty", "Tin tức ngành", "Sự kiện", "Thông báo", "Tuyển dụng"].map((cat) => (
                       <li key={cat}>
-                        <Link to="#" className="text-sm text-gray-600 hover:text-primary transition-colors flex justify-between items-center group">
+                        <Link href="#" className="text-sm text-gray-600 hover:text-primary transition-colors flex justify-between items-center group">
                           <span>{cat}</span>
                           <span className="w-6 h-6 bg-white border border-gray-100 flex items-center justify-center text-[10px] text-gray-400 group-hover:bg-primary group-hover:text-white transition-colors">0</span>
                         </Link>
@@ -155,7 +155,7 @@ export default function News() {
                         </div>
                         <div>
                           <h5 className="text-xs font-bold uppercase leading-tight line-clamp-2 group-hover:text-primary transition-colors">
-                            <Link to={`/tin-tuc/${news.id}`}>{news.title}</Link>
+                            <Link href={`/tin-tuc/${news.id}`}>{news.title}</Link>
                           </h5>
                           <p className="text-[10px] text-gray-400 mt-2 uppercase tracking-wider">{news.date.day}/{news.date.month}/2025</p>
                         </div>
@@ -171,7 +171,7 @@ export default function News() {
                     {["MITEK", "Xi mạ", "VIIF 2025", "Công nghệ", "Môi trường", "Hội thảo"].map((tag) => (
                       <Link 
                         key={tag} 
-                        to="#" 
+                        href="#" 
                         className="px-3 py-1.5 bg-white border border-gray-200 text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:bg-primary hover:text-white hover:border-primary transition-all"
                       >
                         {tag}

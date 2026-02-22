@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import Link from "next/link";
 import { ChevronRight, Calendar, User, Facebook, Twitter, MessageCircle, Share2, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -46,9 +46,9 @@ const relatedNews = [
   }
 ];
 
-export default function NewsDetail() {
-  const { newsId } = useParams();
-  const news = newsData[newsId as keyof typeof newsData] || newsData["mitek-viif-2025"]; // Fallback to first news for demo if ID doesn't match perfectly
+export default function NewsDetail({ params }: { params: { newsId: string } }) {
+  const newsId = params.newsId;
+  const news = newsData[newsId as keyof typeof newsData] || newsData["mitek-viif-2025"];
 
   return (
     <div className="bg-white min-h-screen">
@@ -56,9 +56,9 @@ export default function NewsDetail() {
       <section className="bg-gray-50 border-b border-gray-100 py-6">
         <div className="container px-4">
           <nav className="flex items-center gap-2 text-xs text-gray-500 uppercase font-oswald tracking-widest">
-            <Link to="/" className="hover:text-primary transition-colors">Trang chủ</Link>
+            <Link href="/" className="hover:text-primary transition-colors">Trang chủ</Link>
             <ChevronRight size={12} />
-            <Link to="/tin-tuc" className="hover:text-primary transition-colors">Tin tức</Link>
+            <Link href="/tin-tuc" className="hover:text-primary transition-colors">Tin tức</Link>
             <ChevronRight size={12} />
             <span className="text-primary font-bold truncate max-w-[200px] md:max-w-none">{news.title}</span>
           </nav>
@@ -133,7 +133,7 @@ export default function NewsDetail() {
                       </Button>
                     </div>
                   </div>
-                  <Link to="/tin-tuc">
+                  <Link href="/tin-tuc">
                     <Button variant="ghost" className="uppercase font-oswald font-bold tracking-widest text-primary flex gap-2 hover:bg-primary/5">
                       <ArrowLeft size={18} /> Quay lại tin tức
                     </Button>
@@ -155,7 +155,7 @@ export default function NewsDetail() {
                           <img src={n.image} alt="" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                         </div>
                         <h5 className="text-sm font-oswald uppercase font-bold leading-tight group-hover:text-primary transition-colors">
-                          <Link to={`/tin-tuc/${n.id}`}>{n.title}</Link>
+                          <Link href={`/tin-tuc/${n.id}`}>{n.title}</Link>
                         </h5>
                         <p className="text-[10px] text-gray-400 mt-2 font-bold">{n.date}</p>
                       </div>
@@ -167,7 +167,7 @@ export default function NewsDetail() {
                 <div className="bg-primary p-10 text-white text-center">
                   <h4 className="font-oswald uppercase text-xl font-bold mb-4">MITEK SOLUTIONS</h4>
                   <p className="text-sm opacity-80 mb-8 leading-relaxed">Chúng tôi cung cấp các giải pháp công nghệ xi mạ tiên tiến và thân thiện môi trường.</p>
-                  <Link to="/lien-he">
+                  <Link href="/lien-he">
                     <Button className="bg-white text-primary hover:bg-secondary hover:text-primary font-bold w-full h-12 rounded-none uppercase font-oswald tracking-widest text-xs">
                       Liên hệ ngay
                     </Button>

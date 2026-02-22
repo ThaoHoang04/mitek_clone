@@ -1,25 +1,27 @@
+"use client";
+
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Search, ChevronRight, LayoutGrid, List, Filter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { categories, products } from "@/lib/mock-data";
 
-export default function Products() {
-  const location = useLocation();
+export default function ProductsPage() {
+  const pathname = usePathname();
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
 
   useEffect(() => {
-    const currentPath = location.pathname;
-    const categoryMatch = categories.find(cat => cat.path === currentPath);
+    const categoryMatch = categories.find(cat => cat.path === pathname);
     if (categoryMatch) {
       setSelectedCategory(categoryMatch.id);
-    } else if (currentPath === "/danh-muc-san-pham") {
+    } else if (pathname === "/danh-muc-san-pham") {
       setSelectedCategory("all");
     }
-  }, [location.pathname]);
+  }, [pathname]);
 
   const filteredProducts = products.filter((product) => {
     const matchesCategory = selectedCategory === "all" || product.categoryId === selectedCategory;
@@ -42,7 +44,7 @@ export default function Products() {
             <div>
               <h1 className="text-3xl md:text-5xl uppercase font-bold mb-2">{currentCategoryName}</h1>
               <nav className="flex items-center gap-2 text-sm text-white/80">
-                <Link to="/" className="hover:text-secondary">Trang chủ</Link>
+                <Link href="/" className="hover:text-secondary">Trang chủ</Link>
                 <ChevronRight size={14} />
                 <span className="text-secondary font-medium">Danh mục sản phẩm</span>
               </nav>
@@ -77,7 +79,7 @@ export default function Products() {
                     {categories.map((cat) => (
                       <li key={cat.id}>
                         <Link 
-                          to={cat.path}
+                          href={cat.path}
                           className={cn(
                             "w-full text-left px-4 py-3 font-medium transition-all flex justify-between items-center group",
                             selectedCategory === cat.id 
@@ -154,7 +156,7 @@ export default function Products() {
                           className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500 p-6"
                         />
                         <div className="absolute inset-0 bg-primary/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <Link to={`/${product.id}`}>
+                          <Link href={`/${product.id}`}>
                             <Button variant="outline" className="text-white border-white hover:bg-white hover:text-primary rounded-none">
                               Chi tiết
                             </Button>
@@ -165,13 +167,13 @@ export default function Products() {
                         <div>
                           <span className="text-xs text-primary font-oswald uppercase tracking-wider mb-2 block">{product.categoryName}</span>
                           <h3 className="font-bold text-xl mb-3 text-gray-800 group-hover:text-primary transition-colors">
-                            <Link to={`/${product.id}`}>{product.name}</Link>
+                            <Link href={`/${product.id}`}>{product.name}</Link>
                           </h3>
                           <p className="text-sm text-gray-500 line-clamp-2 leading-relaxed mb-6">
                             {product.description}
                           </p>
                         </div>
-                        <Link to={`/${product.id}`} className="text-sm font-bold text-primary flex items-center gap-2 hover:gap-3 transition-all">
+                        <Link href={`/${product.id}`} className="text-sm font-bold text-primary flex items-center gap-2 hover:gap-3 transition-all">
                           XEM CHI TIẾT <ChevronRight size={14} />
                         </Link>
                       </div>
@@ -202,7 +204,7 @@ export default function Products() {
             Hãy cho chúng tôi biết nhu cầu của bạn.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link to="/lien-he">
+            <Link href="/lien-he">
               <Button size="lg" className="rounded-none px-10 h-14 font-oswald uppercase tracking-wider w-full sm:w-auto">
                 Gửi yêu cầu báo giá
               </Button>

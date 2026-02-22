@@ -1,5 +1,7 @@
+"use client";
+
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Menu, X, Phone, Mail, Globe, ChevronDown, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -65,10 +67,10 @@ export const Header = () => {
       <div className="bg-white border-b border-gray-100 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
-            <img 
-              src="https://bizweb.dktcdn.net/100/424/639/themes/823315/assets/logo.png?1763658688907" 
-              alt="MITEK Logo" 
+          <Link href="/" className="flex items-center">
+            <img
+              src="https://bizweb.dktcdn.net/100/424/639/themes/823315/assets/logo.png?1763658688907"
+              alt="MITEK Logo"
               className="h-12 md:h-16 object-contain"
             />
           </Link>
@@ -77,8 +79,8 @@ export const Header = () => {
           <nav className="hidden lg:flex items-center gap-8">
             {menuItems.map((item) => (
               <div key={item.name} className="relative group">
-                <Link 
-                  to={item.path} 
+                <Link
+                  href={item.path}
                   className="font-oswald uppercase text-gray-800 hover:text-primary py-2 flex items-center gap-1 transition-colors tracking-wide"
                 >
                   {item.name}
@@ -89,8 +91,8 @@ export const Header = () => {
                     <ul className="py-2">
                       {item.subItems.map((sub) => (
                         <li key={sub.name}>
-                          <Link 
-                            to={sub.path} 
+                          <Link
+                            href={sub.path}
                             className="block px-4 py-2 text-sm text-gray-700 hover:bg-primary hover:text-white transition-colors uppercase font-oswald"
                           >
                             {sub.name}
@@ -134,15 +136,15 @@ export const Header = () => {
             {menuItems.map((item) => (
               <li key={item.name} className="border-b border-gray-50 last:border-0">
                 <div className="flex justify-between items-center px-4 py-3">
-                  <Link 
-                    to={item.path} 
+                  <Link
+                    href={item.path}
                     className="font-oswald uppercase text-gray-800 font-medium"
                     onClick={() => !item.subItems && setIsOpen(false)}
                   >
                     {item.name}
                   </Link>
                   {item.subItems && (
-                    <button 
+                    <button
                       onClick={() => setActiveSubmenu(activeSubmenu === item.name ? null : item.name)}
                       className="p-1"
                     >
@@ -154,8 +156,8 @@ export const Header = () => {
                   <ul className="bg-gray-50 py-2">
                     {item.subItems.map((sub) => (
                       <li key={sub.name}>
-                        <Link 
-                          to={sub.path} 
+                        <Link
+                          href={sub.path}
                           className="block px-8 py-2 text-sm text-gray-600 hover:text-primary"
                           onClick={() => setIsOpen(false)}
                         >

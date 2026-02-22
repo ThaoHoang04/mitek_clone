@@ -1,5 +1,5 @@
 import { ArrowRight, CheckCircle2, FlaskConical, Settings, ShieldCheck, Zap } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { products } from "@/lib/mock-data";
 
@@ -54,7 +54,7 @@ export default function Index() {
             {categories.map((cat) => (
               <Link 
                 key={cat.name} 
-                to={cat.path}
+                href={cat.path}
                 className="bg-white p-6 shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center group"
               >
                 <div className="text-primary group-hover:scale-110 transition-transform mb-4">
@@ -141,7 +141,7 @@ export default function Index() {
                     className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 p-4"
                   />
                   <div className="absolute inset-0 bg-primary/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <Link to={`/${product.id}`}>
+                    <Link href={`/${product.id}`}>
                       <Button variant="outline" className="text-white border-white hover:bg-white hover:text-primary rounded-none">
                         Chi tiết
                       </Button>
@@ -162,7 +162,7 @@ export default function Index() {
           </div>
 
           <div className="text-center mt-16">
-            <Link to="/danh-muc-san-pham">
+            <Link href="/danh-muc-san-pham">
               <Button variant="outline" className="rounded-none border-primary text-primary hover:bg-primary hover:text-white px-10 h-14 font-oswald uppercase">
                 Tất cả sản phẩm <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
@@ -185,7 +185,7 @@ export default function Index() {
             <a href="tel:02723759664" className="bg-secondary text-primary px-8 py-4 font-oswald uppercase font-bold flex items-center justify-center gap-2 hover:bg-white transition-colors">
               <ArrowRight className="w-5 h-5" /> Gọi ngay: 0272.375.9664
             </a>
-            <Link to="/lien-he" className="bg-white/10 border border-white px-8 py-4 font-oswald uppercase font-bold flex items-center justify-center gap-2 hover:bg-white hover:text-primary transition-colors">
+            <Link href="/lien-he" className="bg-white/10 border border-white px-8 py-4 font-oswald uppercase font-bold flex items-center justify-center gap-2 hover:bg-white hover:text-primary transition-colors">
               Gửi yêu cầu báo giá
             </Link>
           </div>
