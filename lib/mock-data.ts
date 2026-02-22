@@ -190,3 +190,25 @@ export const galleryItems = [
     summary: "Cơ sở hạ tầng và trang thiết bị hiện đại tại nhà máy sản xuất của MITEK."
   }
 ];
+
+export const galleryDetailData: Record<string, any> = {
+  "outing-2020-nha-trang": {
+    title: "Outing 2020 Nha Trang",
+    date: "12/08/2021",
+    description: "Hành trình Outing 2020 tại Nha Trang của tập thể MITEK đã để lại nhiều kỷ niệm đáng nhớ. Những hoạt động team building sôi động, những giây phút thư giãn bên bờ biển xanh đã thắt chặt thêm tinh thần đoàn kết của các thành viên.",
+    images: [
+      { src: "https://bizweb.dktcdn.net/100/424/639/articles/1.jpg?v=1628753030207", alt: "Outing 2020 Nha Trang - Team MITEK" },
+      { src: "https://bizweb.dktcdn.net/100/424/639/files/1.jpg?v=1628752846095", alt: "Outing 2020 Nha Trang - Biển xanh" },
+      { src: "https://bizweb.dktcdn.net/100/424/639/files/5.jpg?v=1628752891579", alt: "Outing 2020 Nha Trang - Team building" },
+      { src: "https://bizweb.dktcdn.net/100/424/639/files/7.jpg?v=1628752913399", alt: "Outing 2020 Nha Trang - Gala Dinner" },
+      { src: "https://bizweb.dktcdn.net/100/424/639/files/8.jpg?v=1628752920941", alt: "Outing 2020 Nha Trang - Chụp ảnh lưu niệm" },
+      { src: "https://bizweb.dktcdn.net/100/424/639/files/10.jpg?v=1628752941086", alt: "Outing 2020 Nha Trang - Vui chơi trên biển" },
+      { src: "https://bizweb.dktcdn.net/100/424/639/files/11.jpg?v=1628752949213", alt: "Outing 2020 Nha Trang - Khám phá vịnh" },
+      { src: "https://bizweb.dktcdn.net/100/424/639/files/12.jpg?v=1628752957096", alt: "Outing 2020 Nha Trang - Tập thể đoàn kết" },
+      { src: "https://bizweb.dktcdn.net/100/424/639/files/15.jpg?v=1628752969774", alt: "Outing 2020 Nha Trang - Những nụ cười" },
+      { src: "https://bizweb.dktcdn.net/100/424/639/files/16.jpg?v=1628752978586", alt: "Outing 2020 Nha Trang - Kỷ niệm khó quên" },
+      { src: "https://bizweb.dktcdn.net/100/424/639/files/3.jpg?v=1628752874779", alt: "Outing 2020 Nha Trang - Khởi động" },
+      { src: "https://bizweb.dktcdn.net/100/424/639/files/4.jpg?v=1628752875806", alt: "Outing 2020 Nha Trang - Teambuilding sôi động" }
+    ]
+  }
+};
