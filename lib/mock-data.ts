@@ -159,3 +159,34 @@ export const products = [
     }
   }
 ];
+
+export const galleryItems = [
+  {
+    id: "outing-2020-nha-trang",
+    title: "Outing 2020 Nha Trang",
+    date: { day: "16", month: "T08" },
+    image: "https://bizweb.dktcdn.net/100/424/639/articles/1.jpg?v=1628753030207",
+    summary: "Outing 2020 Nha Trang. Một hành trình gắn kết và tràn đầy năng lượng của tập thể MITEK."
+  },
+  {
+    id: "cong-nghe-ma-metatech",
+    title: "Công nghệ mạ Metatech",
+    date: { day: "16", month: "T08" },
+    image: "https://bizweb.dktcdn.net/100/424/639/articles/image45.jpg?v=1629270933923",
+    summary: "Giới thiệu các giải pháp công nghệ mạ Metatech tiên tiến, tối ưu hiệu quả sản xuất."
+  },
+  {
+    id: "chrome-plating",
+    title: "Mạ crom",
+    date: { day: "04", month: "T08" },
+    image: "https://bizweb.dktcdn.net/100/424/639/articles/macrom.jpg?v=1629274103357",
+    summary: "Hình ảnh quy trình và sản phẩm mạ crom chất lượng cao tại nhà máy MITEK."
+  },
+  {
+    id: "production-factory",
+    title: "Nhà máy sản xuất MITEK",
+    date: { day: "12", month: "T07" },
+    image: "https://bizweb.dktcdn.net/100/424/639/themes/823315/assets/image-abouts.png?1763658688907",
+    summary: "Cơ sở hạ tầng và trang thiết bị hiện đại tại nhà máy sản xuất của MITEK."
+  }
+];
