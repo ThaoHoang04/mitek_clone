@@ -1,6 +1,7 @@
 import { ArrowRight, CheckCircle2, FlaskConical, Settings, ShieldCheck, Zap } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { HeroSlider } from "@/components/HeroSlider";
 import { products } from "@/lib/mock-data";
 
 const categories = [
@@ -15,47 +16,18 @@ export default function Index() {
 
   return (
     <div className="bg-white">
-      {/* Hero Section */}
-      <section className="relative h-[500px] md:h-[700px] overflow-hidden">
-        <div className="absolute inset-0">
-          <img 
-            src="https://bizweb.dktcdn.net/100/424/639/themes/823315/assets/slider_1.jpg?1763658688907" 
-            alt="Hero Background" 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-black/40" />
-        </div>
-        <div className="container relative h-full flex items-center px-4">
-          <div className="max-w-2xl text-white">
-            <h1 className="text-4xl md:text-6xl mb-6 leading-tight animate-fade-in-up">
-              GIẢI PHÁP CÔNG NGHỆ <br />
-              <span className="text-secondary font-bold">HOÀN THIỆN BỀ MẶT</span>
-            </h1>
-            <p className="text-lg md:text-xl mb-8 opacity-90 font-light leading-relaxed">
-              MITEK tự hào là đơn vị hàng đầu cung cấp hóa chất và thiết bị xi mạ, 
-              cam kết mang lại giá trị bền vững cho ngành công nghiệp phụ trợ.
-            </p>
-            <div className="flex gap-4">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 rounded-none px-8 font-oswald uppercase text-base">
-                Xem sản phẩm
-              </Button>
-              <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10 rounded-none px-8 font-oswald uppercase text-base">
-                Liên hệ ngay
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Hero Slider Section */}
+      <HeroSlider />
 
       {/* Categories Bar */}
-      <section className="bg-gray-50 py-12">
+      <section className="section-gray py-12">
         <div className="container px-4">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {categories.map((cat) => (
-              <Link 
-                key={cat.name} 
+              <Link
+                key={cat.name}
                 href={cat.path}
-                className="bg-white p-6 shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center group"
+                className="category-card"
               >
                 <div className="text-primary group-hover:scale-110 transition-transform mb-4">
                   {cat.icon}
@@ -121,24 +93,23 @@ export default function Index() {
       </section>
 
       {/* Products Section */}
-      <section className="py-24 bg-gray-50">
+      <section className="section-gray py-24">
         <div className="container px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-5xl mb-4">SẢN PHẨM TIÊU BIỂU</h2>
+            <h2 className="section-title">SẢN PHẨM TIÊU BIỂU</h2>
             <div className="w-20 h-1.5 bg-primary mx-auto mb-6" />
-            <p className="text-gray-500">
+            <p className="section-subtitle text-gray-500">
               Khám phá các dòng hóa chất và phụ gia xi mạ chất lượng cao được tin dùng bởi hàng trăm doanh nghiệp.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {featuredProducts.map((product) => (
-              <div key={product.id} className="bg-white group overflow-hidden border border-gray-100 hover:border-primary/20 transition-all hover:shadow-xl">
-                <div className="relative aspect-square overflow-hidden bg-gray-100">
+              <div key={product.id} className="product-card">
+                <div className="product-card-image">
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 p-4"
                   />
                   <div className="absolute inset-0 bg-primary/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <Link href={`/${product.id}`}>

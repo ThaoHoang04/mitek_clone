@@ -31,6 +31,7 @@ const menuItems = [
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
+  const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
 
   return (
     <header className="w-full">
@@ -78,22 +79,33 @@ export const Header = () => {
           {/* Desktop Menu */}
           <nav className="hidden lg:flex items-center gap-8">
             {menuItems.map((item) => (
-              <div key={item.name} className="relative group">
+              <div
+                key={item.name}
+                className="relative group"
+                onMouseEnter={() => setHoveredMenu(item.name)}
+                onMouseLeave={() => setHoveredMenu(null)}
+              >
                 <Link
                   href={item.path}
-                  className="font-oswald uppercase text-gray-800 hover:text-primary py-2 flex items-center gap-1 transition-colors tracking-wide"
+                  className={cn(
+                    "font-oswald uppercase py-2 flex items-center gap-1 transition-colors tracking-wide relative",
+                    "before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-primary before:transition-all before:duration-300",
+                    hoveredMenu === item.name && "text-primary before:w-full",
+                    item.name === "Liên hệ" && hoveredMenu === item.name && "text-primary",
+                    hoveredMenu !== item.name && "text-gray-800 hover:text-primary"
+                  )}
                 >
                   {item.name}
                   {item.subItems && <ChevronDown size={14} />}
                 </Link>
                 {item.subItems && (
-                  <div className="absolute left-0 top-full bg-white shadow-xl border-t-2 border-primary min-w-[240px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                  <div className="absolute left-0 top-full bg-white shadow-xl border-t-4 border-primary min-w-[240px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 mt-0 translate-y-0 group-hover:translate-y-0">
                     <ul className="py-2">
                       {item.subItems.map((sub) => (
                         <li key={sub.name}>
                           <Link
                             href={sub.path}
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-primary hover:text-white transition-colors uppercase font-oswald"
+                            className="block px-6 py-3 text-sm text-gray-700 hover:bg-primary hover:text-white transition-colors uppercase font-oswald font-medium"
                           >
                             {sub.name}
                           </Link>
