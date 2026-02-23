@@ -29,8 +29,9 @@ export default function GalleryPage() {
         <div className="container px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {galleryItems.map((item) => (
-              <div 
-                key={item.id} 
+              <Link
+                key={item.id}
+                href={`/${item.id}`}
                 className="group border border-gray-100 hover:border-primary/10 transition-all hover:shadow-2xl bg-white flex flex-col h-full"
               >
                 {/* Image Container */}
@@ -81,7 +82,7 @@ export default function GalleryPage() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 
